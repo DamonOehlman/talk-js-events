@@ -166,7 +166,7 @@ document.addEventListener(&#39;keypress&#39;, captureKey, true);</code></pre>
         </section>
         
         <section >
-        	<h2>Today&#39;s most impressive Demo</h2>
+        	<h2>Black Screen of Awesome</h2>
 <p><a href="http://snurl.com/evedemo">http://snurl.com/evedemo</a>
 
 </p>
@@ -200,14 +200,62 @@ eve.on(&#39;evematrix.key&#39;, function(key) {
 
         </section>
         
-        <section data-bg="images/6968108915_88369197b2_o.jpg"data-attribution="http://www.flickr.com/photos/32482342@N05/6968108915/">
-        	
+        <section >
+        	<h2>Extension Two: Network Comms</h2>
+<pre><code class="lang-js">var socket = new WebSocket(&#39;ws://mymagicmachine:8001/&#39;);
+
+// once the socket is opened
+socket.onopen = function() {
+    eve.on(&#39;*&#39;, function() {
+        // if the scope is the websocket, abort
+        if (this === socket) return;
+
+        socket.send(eve.nt() + &#39;|&#39; + 
+            Array.prototype.join.call(arguments, &#39;|&#39;));
+    });
+};
+
+socket.onmessage = function(evt) {
+    // when we receive a message, break it up and map it to eve
+    var args = evt.data.split(&#39;|&#39;);
+
+    // trigger even
+    eve.apply(eve, [args[0], socket].concat(args.slice(1)));
+};</code></pre>
+
 
 
         </section>
         
         <section >
-        	
+        	<h2>Extension Three: Color Me Lime</h2>
+<pre><code class="lang-js">var children = document.body.children;
+
+eve.on(&#39;evematrix.key&#39;, function() {
+    if (!(this instanceof WebSocket)) {
+        // get the last child and apply the mytext class
+        children[children.length - 1].classList.add(&#39;mytext&#39;);
+    }
+})(10);</code></pre>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Eve Gotchas</h2>
+<ul>
+<li>Namespace your events!</li>
+<li>Learn you some Javascript.</li>
+</ul>
+
+
+
+        </section>
+        
+        <section data-bg="images/6968108915_88369197b2_o.jpg"data-attribution="http://www.flickr.com/photos/32482342@N05/6968108915/">
+        	<h1>Embrace your Freedom!</h1>
+
 
 
         </section>
@@ -215,7 +263,12 @@ eve.on(&#39;evematrix.key&#39;, function(key) {
         <section >
         	<h2>References</h2>
 <ul>
-<li><a href="http://www.quirksmode.org/js/events_order.html">Quirks Mode - Event Order Info</a></li>
+<li><p><a href="http://www.quirksmode.org/js/events_order.html">Quirks Mode - Event Order Info</a></p>
+</li>
+<li><p><a href="https://github.com/DamonOehlman/demo-matrixeve">https://github.com/DamonOehlman/demo-matrixeve</a></p>
+</li>
+<li><p><a href="http://damonoehlman.github.com/talks-js-events/output/">Slides</a></p>
+</li>
 </ul>
 
 

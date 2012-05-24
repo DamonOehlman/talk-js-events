@@ -39,7 +39,7 @@ That's our core application!
 
 ---
 
-## Today's most impressive Demo
+## Black Screen of Awesome
 
 <http://snurl.com/evedemo>
 
@@ -73,12 +73,53 @@ eve.on('evematrix.key', function(key) {
 ## Extension Two: Network Comms
 
 ```js
+var socket = new WebSocket('ws://mymagicmachine:8001/');
+
+// once the socket is opened
+socket.onopen = function() {
+    eve.on('*', function() {
+        // if the scope is the websocket, abort
+        if (this === socket) return;
+        
+        socket.send(eve.nt() + '|' + 
+            Array.prototype.join.call(arguments, '|'));
+    });
+};
+
+socket.onmessage = function(evt) {
+    // when we receive a message, break it up and map it to eve
+    var args = evt.data.split('|');
+    
+    // trigger even
+    eve.apply(eve, [args[0], socket].concat(args.slice(1)));
+};
 ```
+
+---
+
+## Extension Three: Color Me Lime
+
+```js
+var children = document.body.children;
+
+eve.on('evematrix.key', function() {
+    if (!(this instanceof WebSocket)) {
+        // get the last child and apply the mytext class
+        children[children.length - 1].classList.add('mytext');
+    }
+})(10);
+```
+
+---
+
+## Eve Gotchas
+
+- Namespace your events!
+- Learn you some Javascript.
 
 ---
 
 :data-bg:> images/6968108915_88369197b2_o.jpg
 :data-attribution:> http://www.flickr.com/photos/32482342@N05/6968108915/
 
----
-
+# Embrace your Freedom!
