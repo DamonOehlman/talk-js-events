@@ -1,0 +1,34 @@
+{
+    "title": "Javascript Events",
+    "template": "reveal.js",
+    "extras": [ "extension-hash", "theme-swiss" ],
+    
+    "sources": [
+        "files/intro.md",
+        "files/traditional.md",
+        "files/eve.md",
+        "files/references.md"
+    ],
+    
+    "includes": {
+        "head": [
+            "css/pres.style.css"
+        ],
+        
+        "body": [
+            "js/pres.js"
+        ]
+    },
+    
+    "theme": "dark",
+    "plugins": {
+        "code": {
+            "style": "zenburn"
+        }
+    },
+    
+    "resources": [
+        "css/pres.style.css <= resources/css/pres.style.css",
+        "js/pres.js <= resources/js/pres.js"
+    ]
+}

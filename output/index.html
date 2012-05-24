@@ -1,0 +1,273 @@
+<!doctype html>  
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Javascript Events</title>
+
+<meta name="description" content="An easy to use CSS 3D slideshow tool for quickly creating good looking HTML presentations.">
+<meta name="author" content="Hakim El Hattab">
+
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/pres.style.css" /><link rel="stylesheet" type="text/css" href="css/highlight.zenburn.css" /><link rel="stylesheet" type="text/css" href="css/reset.css" /><link rel="stylesheet" type="text/css" href="css/main.css" /><script src="js/jquery.min.js"></script>
+</head>
+<body>
+<div id="reveal">
+	<!-- Used to fade in a background when a specific slide state is reached -->
+	<div class="state-background"></div>
+	
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+	    
+        <section data-bg="images/5944308910_44a50fba49_b.jpg"data-attribution="http://www.flickr.com/photos/pasukaru76/5944308910/in/set-72157624732951397/">
+        	<h1>Javascript Event Magic</h1>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Overview</h2>
+<ul>
+<li>High level overview of JS and Browser events</li>
+<li>Rethinking Events for Extensible Web Apps</li>
+</ul>
+
+
+
+        </section>
+        
+        <section data-bg="images/5589243043_28e4b45a28_b.jpg"data-attribution="http://www.flickr.com/photos/pasukaru76/">
+        	<h1>Now and Then</h1>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Events are Bound to Something</h2>
+<ul>
+<li><code>targetObject.addEventListener</code></li>
+<li><code>targetObject.removeEventListener</code></li>
+</ul>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Bubbling vs Capture</h2>
+<p>Consider the following code:
+
+</p>
+<pre><code class="lang-js">element.addEventListener(
+    &#39;click&#39;,        // event name
+    handleClick,    // event handler
+    false           // event, um?!
+);</code></pre>
+<p>What is that third value specifying anyway?
+
+</p>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Event Phasing: Bubbling</h2>
+<p><img src="images/eventorder-bubble.png" alt="">
+
+</p>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Bubble Fiddle</h2>
+<iframe style="width: 100%; height: 420px;" src="http://jsfiddle.net/DamonOehlman/LcbwB/embedded/js,html,result/presentation/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Event Phasing: Capture</h2>
+<p><img src="images/eventorder-capture.png" alt="">
+
+</p>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Capture Fiddle</h2>
+<iframe style="width: 100%; height: 420px;" src="http://jsfiddle.net/DamonOehlman/Mpyh8/embedded/js,html,result/presentation/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+
+
+
+
+        </section>
+        
+        <section data-bg="images/5498393620_b4990431c6_b.jpg"data-attribution="http://www.flickr.com/photos/s3a/5498393620/">
+        	<h1>Liberating Events</h1>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Events can be Free</h2>
+<ul>
+<li>Almost all implementations of events involve binding event handlers for a named event on a particular object.</li>
+<li>Consider what might be possible if events could run free?</li>
+</ul>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Eve can liberate events</h2>
+<ul>
+<li>Eve will allow you to create a more loosely coupled app than you might have previously thought possible.</li>
+<li>Understand that eve embraces Javascript.</li>
+</ul>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Example: Mapping Key Events</h2>
+<p>Consider the following (somewhat contrived) example:
+
+</p>
+<pre><code class="lang-js">function captureKey(evt) {
+    eve(
+        &#39;evematrix.key&#39;,
+        evt.target,
+        String.fromCharCode(evt.charCode)
+    );
+}
+
+document.addEventListener(&#39;keypress&#39;, captureKey, true);</code></pre>
+<p>That&#39;s our core application!
+
+</p>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Today&#39;s most impressive Demo</h2>
+<p><a href="http://snurl.com/evedemo">http://snurl.com/evedemo</a>
+
+</p>
+
+
+
+        </section>
+        
+        <section >
+        	<h2>Our First Extension: Motion</h2>
+<pre><code class="lang-js">// let&#39;s write a key handler to do something
+eve.on(&#39;evematrix.key&#39;, function(key) {
+    // create a new span element
+
+    // after a period of time, add a transform that will
+    // move the span element off the screen
+    setTimeout(function() {
+        stylar(span).set(
+            &#39;transform&#39;, 
+            &#39;translate(0px, &#39; + (window.innerHeight + 100) + &#39;px)&#39;
+        );
+    }, 50);
+
+    // hacky - after the transition has executed remove it
+    setTimeout(function() {
+        document.body.removeChild(span);
+    }, 1700);
+});</code></pre>
+
+
+
+        </section>
+        
+        <section data-bg="images/6968108915_88369197b2_o.jpg"data-attribution="http://www.flickr.com/photos/32482342@N05/6968108915/">
+        	
+
+
+        </section>
+        
+        <section >
+        	
+
+
+        </section>
+        
+        <section >
+        	<h2>References</h2>
+<ul>
+<li><a href="http://www.quirksmode.org/js/events_order.html">Quirks Mode - Event Order Info</a></li>
+</ul>
+
+
+
+        </section>
+        
+	</div>
+
+	<!-- The navigational controls UI -->
+	<aside class="controls">
+		<a class="left" href="#">&#x25C4;</a>
+		<a class="right" href="#">&#x25BA;</a>
+		<a class="up" href="#">&#x25B2;</a>
+		<a class="down" href="#">&#x25BC;</a>
+	</aside>
+
+	<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+	<div class="progress"><span></span></div>
+</div>
+<script src="js/pres.js"></script><script src="js/highlight.js"></script><script>hljs.initHighlightingOnLoad();</script><script src="js/highlight-javascript.js"></script><script src="js/reveal.js"></script><script src="lib/classList.js"></script>
+<script>
+	// Parse the query string into a key/value object
+	var query = {};
+	location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+		query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+	} );
+
+	Reveal.initialize({
+		// Display controls in the bottom right corner
+		controls: true,
+
+		// Display a presentation progress bar
+		progress: true,
+
+		// If true; each slide will be pushed to the browser history
+		history: true,
+
+		// Loops the presentation, defaults to false
+		loop: false,
+
+		// Flags if mouse wheel navigation should be enabled
+		mouseWheel: true,
+
+		// Apply a 3D roll to links on hover
+		rollingLinks: true,
+
+		// UI style
+		theme: query.theme || 'default', // default/neon
+
+		// Transition style
+		transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+#reveal pre {
+    font-size: 20px !important;
+    line-height: 1.3em !important;
+    width: 96% !important;
+    margin: 20px auto !important;
+}
+
+#reveal pre code {
+    padding: 0.5em 1em !important;
+}
+
+#reveal section img {
+    max-width: 100%;
+}
+
+#reveal section[data-bg] {
+    padding-top: 20px;
+    background-size: cover;
+}
+
+#reveal section[data-bg]::after {
+    content: ' ';
+    height: -webkit-calc(100% - 16px);
+    width: -webkit-calc(100% - 16px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #333;
+    border: 8px solid rgba(0, 0, 0, 0.8);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+#reveal section[data-bg] > h1 {
+    position: absolute;
+    bottom: 10px;
+    color: transparent;
+    width: 100%;
+}
+
+#reveal section[data-bg] > h1::after {
+}

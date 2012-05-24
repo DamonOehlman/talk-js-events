@@ -1,0 +1,23 @@
+{
+  "name": "talk-html5-messaging",
+  "description": "Talk on HTML5 Messaging Techniques",
+  "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
+  "tags": [ "html5" ],
+  "version": "0.0.1",
+  "private": "true",
+
+  "devDependencies": {
+    "attachmate": "0.1.x",
+    "jade": "*"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DamonOehlman/talk-html5-messaging.git"
+  },
+  "bugs": {
+    "url": "http://github.com/DamonOehlman/talk-html5-messaging/issues"
+  },
+  
+  "contributors": []
+}
