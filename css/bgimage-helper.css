@@ -1,0 +1,39 @@
+section[data-bg] {
+    padding-top: 20px;
+    background-size: cover;
+}
+
+section[data-bg]::after {
+    content: ' ';
+    height: -webkit-calc(100% - 16px);
+    width: -webkit-calc(100% - 16px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #333;
+    border: 8px solid rgba(0, 0, 0, 0.8);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+section[data-bg] > h1 {
+    position: absolute;
+    bottom: 25px;
+    color: transparent;
+    width: 100%;
+}
+
+section[data-bg] > h1::after {
+}
+
+section .attribution {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    font-size: 12pt;
+}
+
+section .attribution a {
+    color: #e8e8e8 !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+}

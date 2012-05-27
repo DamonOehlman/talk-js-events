@@ -5,3 +5,5 @@
 - <https://github.com/DamonOehlman/demo-matrixeve>
 
 - [Slides](http://damonoehlman.github.com/talk-js-events/output/)
+
+- [Eve Source Repo](https://github.com/DmitryBaranovskiy/eve)
